@@ -12,7 +12,13 @@
   },
   "jest": {
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "testconfig.js",
+      "package.json",
+      "package-lock.json"
+    ]
   },
   "repository": {
     "type": "git",
@@ -33,6 +39,7 @@
     "jest": "^24.1.0"
   },
   "dependencies": {
+    "faker": "^4.1.0",
     "sqlite3": "^4.0.6",
     "uuid": "^3.3.2"
   }

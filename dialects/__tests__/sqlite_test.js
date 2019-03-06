@@ -18,12 +18,14 @@ describe('sqlite dialect tests', () => {
   test('sqlite should connect', async () => {
     const c = new SQLiteDatabaseClient()
     expect(await c.connect(cURL)).toBeTruthy()
+    await c.destroy()
   });
 
   test('sqlite should alive', async () => {
     const c = new SQLiteDatabaseClient()
     await c.connect(cURL)
     expect(c.isAlive()).toBeTruthy()
+    await c.destroy()
   });
 
   test('sqlite should destroy', async () => {
@@ -38,6 +40,7 @@ describe('sqlite dialect tests', () => {
     await c.exec(sCreateDB)
     await c.exec(sInserSample)
     expect((await c.query(sSelect)).length).toBe(1)
+    await c.destroy()
   });
 
 });
