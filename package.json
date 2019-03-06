@@ -7,7 +7,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:cov": "jest && codecov"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,7 @@
   },
   "homepage": "https://github.com/Soontao/DBMark#readme",
   "devDependencies": {
+    "codecov": "^3.2.0",
     "eslint": "^5.15.1",
     "jest": "^24.1.0"
   },
