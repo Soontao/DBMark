@@ -1,0 +1,1 @@
+ INSERT INTO test(id,v_text) VALUES ("bcb3766d5bea4d1dae8359539249c979","test text"); 

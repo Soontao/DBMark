@@ -1,0 +1,33 @@
+{
+  "name": "dbmark",
+  "version": "1.0.0",
+  "description": "database benchmark tool",
+  "engines": {
+    "node": ">8"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soontao/DBMark.git"
+  },
+  "keywords": [
+    "database"
+  ],
+  "author": "Theo Sun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Soontao/DBMark/issues"
+  },
+  "homepage": "https://github.com/Soontao/DBMark#readme",
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "sqlite3": "^4.0.6",
+    "uuid": "^3.3.2"
+  }
+}
