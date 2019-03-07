@@ -20,7 +20,7 @@ describe('Sequential Executor Test Suite', async () => {
       },
       {
         sql: 'INSERT INTO test(id,v_text) VALUES ("bcb3766d5bea4d1dae8359539249c979","test text"); ',
-        sqlType: SQLType.DDL,
+        sqlType: SQLType.DML,
       },
       {
         sql: 'SELECT * FROM test WHERE id = "bcb3766d5bea4d1dae8359539249c979";',
@@ -32,7 +32,7 @@ describe('Sequential Executor Test Suite', async () => {
     const executor = new SequentialExecutor(conn)
 
     const results = Array.from(await executor.run(cases))
-    
+
     expect(results.length).toBe(3)
     results.forEach(r => expect(r.success).toBeTruthy())
 

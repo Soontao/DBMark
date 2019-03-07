@@ -1,5 +1,6 @@
 import { IExecutor, SQLType, RunResult, RunCase } from "./base";
 import { DatabaseClinet } from "../dialects/base";
+import { getLogger, Logger } from "log4js";
 
 /**
  * SequentialExecutor
@@ -7,6 +8,8 @@ import { DatabaseClinet } from "../dialects/base";
 export class SequentialExecutor implements IExecutor {
 
   private conn: DatabaseClinet;
+
+  private logger = getLogger("SequentialExecutor")
 
   constructor(conn: DatabaseClinet) {
     this.conn = conn;
@@ -25,6 +28,7 @@ export class SequentialExecutor implements IExecutor {
       try {
         switch (runCase.sqlType) {
           case SQLType.DDL:
+          case SQLType.DML:
             await this.conn.exec(runCase.sql)
             break;
           case SQLType.DQL:
@@ -40,6 +44,7 @@ export class SequentialExecutor implements IExecutor {
         // catch error
         runCaseResult.success = false
         runCaseResult.result = error
+        this.logger.error(error)
         // log here
       }
       runCaseResult.timeEnd = new Date() // assign end date

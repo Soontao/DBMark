@@ -15,6 +15,10 @@ export enum SQLType {
    * Query
    */
   DQL,
+  /**
+   * CREATE
+   */
+  DML,
 }
 
 export interface RunCase {
