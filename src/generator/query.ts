@@ -1,4 +1,5 @@
-const { GeneratedColumn } = require("./table")
+import { GeneratedColumn } from "./table";
+
 
 
 class GeneratedQuery {
@@ -18,8 +19,11 @@ class GeneratedQuery {
 }
 
 class GenreatedFilter {
+  
+  private column: GeneratedColumn;
 
-  getColumn() {
+  getColumn(): GeneratedColumn {
+    return this.column;
 
   }
 

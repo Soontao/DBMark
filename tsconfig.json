@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "newLine": "LF",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "charset": "utf-8",
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "outDir": "bin",
+    "removeComments": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "@types/node",
+      "@types/jest"
+    ]
+  },
+  "files": [
+    "./src/dialects/index.ts",
+    "./src/utils/index.ts",
+    "./src/index.ts"
+  ]
+}

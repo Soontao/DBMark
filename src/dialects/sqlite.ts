@@ -1,12 +1,12 @@
-const { DatabaseClient } = require("./base")
-const sqlite3 = require('sqlite3').verbose();
+import { DatabaseClinet } from "./base";
 
+const sqlite3 = require("sqlite3").verbose()
 
-class SQLiteDatabaseClient extends DatabaseClient {
+export class SQLiteDatabaseClient implements DatabaseClinet {
 
+  private db
 
-
-  async connect(url) {
+  async connect(url): Promise<boolean> {
     return await new Promise((resolve, reject) => {
       this.db = new sqlite3.Database(url, err => {
         if (err) {
@@ -26,7 +26,7 @@ class SQLiteDatabaseClient extends DatabaseClient {
 
   }
 
-  async isAlive() {
+  async isAlive(): Promise<boolean> {
     return new Promise((res, rej) => {
       this.db.exec("SELECT 1 + 1;", (err) => {
         if (err) {
@@ -38,7 +38,7 @@ class SQLiteDatabaseClient extends DatabaseClient {
     })
   }
 
-  async destroy() {
+  async destroy(): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.db.close(err => {
         if (err) {
@@ -50,7 +50,7 @@ class SQLiteDatabaseClient extends DatabaseClient {
     })
   }
 
-  async query(sql) {
+  async query(sql): Promise<Array<Object>> {
     return new Promise((resolve, reject) => {
       this.db.all(sql, (err, rows) => {
         if (err) {
@@ -62,7 +62,7 @@ class SQLiteDatabaseClient extends DatabaseClient {
     })
   }
 
-  async exec(sql) {
+  async exec(sql): Promise<void> {
     return new Promise((resolve, reject) => {
       this.db.run(sql, (err) => {
         if (err) {
@@ -75,5 +75,3 @@ class SQLiteDatabaseClient extends DatabaseClient {
   }
 
 }
-
-module.exports = { SQLiteDatabaseClient }

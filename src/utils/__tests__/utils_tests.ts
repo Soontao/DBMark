@@ -1,4 +1,4 @@
-const { createUUID } = require("..")
+import { createUUID } from '../uuid';
 
 describe('utils tests suite', () => {
 

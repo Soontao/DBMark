@@ -1,9 +1,9 @@
 
-const { SQLiteDatabaseClient } = require("./sqlite")
-// eslint-disable-next-line no-unused-vars
-const { DatabaseClient } = require("./base")
+import { SQLiteDatabaseClient } from './sqlite';
 
 class NotSupportDatabase extends Error { }
+
+export { SQLiteDatabaseClient }
 
 /**
  * create database connection
@@ -12,7 +12,7 @@ class NotSupportDatabase extends Error { }
  * @param {string} url
  * @returns {DatabaseClient} 
  */
-const createConnection = (type = "sqlite", url) => {
+export const createConnection = (type = "sqlite", url) => {
   switch (type) {
   case "sqlite":
   {
@@ -25,4 +25,3 @@ const createConnection = (type = "sqlite", url) => {
   }
 }
 
-module.exports = { SQLiteDatabaseClient, createConnection }

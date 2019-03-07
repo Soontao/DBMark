@@ -1,2 +1,2 @@
 ignore:
-  - "dialects/base.js"
+  - "src/dialects/base.js"

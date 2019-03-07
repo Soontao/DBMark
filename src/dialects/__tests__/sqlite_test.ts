@@ -1,10 +1,10 @@
-const { SQLiteDatabaseClient } = require("../sqlite")
-const { readFileSync } = require("fs")
-const path = require("path")
-
-const readFile = p => readFileSync(path.join(__dirname, p), { encoding: "utf8" })
+import { SQLiteDatabaseClient } from '../sqlite';
+import { readFileSync } from 'fs';
+import * as path from "path"
 
 describe('sqlite dialect tests', () => {
+
+  const readFile = p => readFileSync(path.join(__dirname, p), { encoding: "utf8" })
 
   const cURL = ":memory:";
 
