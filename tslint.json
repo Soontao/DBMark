@@ -1,9 +1,9 @@
 {
   "rules": {
-      "quotes": [
-          2,
-          "backtick",
-          "single"
-      ]
+    "quotes": [
+      2,
+      "backtick",
+      "single"
+    ]
   }
 }
