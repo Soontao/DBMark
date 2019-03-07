@@ -9,6 +9,7 @@
       "es6",
       "dom"
     ],
+    "downlevelIteration": true,
     "sourceMap": true,
     "module": "commonjs",
     "target": "es5",

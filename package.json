@@ -22,13 +22,9 @@
       "/node_modules/",
       "testconfig.js",
       "package.json",
-      "package-lock.json"
-    ],
-    "globals": {
-      "ts-jest": {
-        "skipBabel": true
-      }
-    }
+      "package-lock.json",
+      "tsconfig.json"
+    ]
   },
   "repository": {
     "type": "git",
