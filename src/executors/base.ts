@@ -1,4 +1,5 @@
 
+import { GeneratedTable } from '../generator/config';
 /**
  * ExecuteResponse Interface
  */
@@ -32,6 +33,17 @@ export interface RunCase {
    * the sql type
    */
   sqlType: SQLType;
+
+  /**
+   * generated table
+   */
+  table?: GeneratedTable;
+
+
+  /**
+   * the row index of this run case
+   */
+  rowIndex?: number;
 
   /**
    * for DQL sql, specific this function for check result

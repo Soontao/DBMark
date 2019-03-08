@@ -30,7 +30,12 @@ export class DatabaseDataGenertor implements Iterable<RunCase> {
         const currentTable = this._config.tables[_currentTableIdx]
         const currentTableMaxRowsIdx = currentTable.rowsCount - 1;
 
-        var value = { sql: this.generteInsertSQL(currentTable), sqlType: SQLType.DML }
+        var value: RunCase = {
+          sql: this.generteInsertSQL(currentTable),
+          sqlType: SQLType.DML,
+          table: currentTable,
+          rowIndex: _currentTableIdx
+        }
 
         if (_currentRow == currentTableMaxRowsIdx) {
           // current table last row
