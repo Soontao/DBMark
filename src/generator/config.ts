@@ -1,4 +1,7 @@
 
+/**
+ * ColumnType enum
+ */
 export enum ColumnType {
   VARCHAR_32 = "VARCHAR(32)",
   VARCHAR_255 = "VARCHAR(255)",
@@ -11,39 +14,49 @@ export enum ColumnType {
 }
 
 /**
- * Table Config
- */
-export interface TableConfig {
-
-  columnsCount: number;
-
-  indexsCount: number;
-
-  rowsCount: number;
-
-}
-
-/**
  * Database Config
  */
 export interface DatabaseConfig {
 
+  /**
+   * tables count
+   */
   tablesCount: number;
 
+  /**
+   * max columns count of one table
+   */
   maxColumnsCount: number;
 
+  /**
+   * max indexes count of one table
+   */
+  maxIndexsCount: number;
+
+  /**
+   * max data rows count of one table
+   */
   maxRowsCount: number;
 
 }
 
+/**
+ * GeneratedDataBase type
+ */
 export interface GeneratedDataBase {
 
+  /**
+   * generated tables
+   */
   tables: GeneratedTable[];
 
   queries?: GeneratedQuery[];
 
 }
 
+/**
+ * GeneratedTable type
+ */
 export interface GeneratedTable {
 
   /**
@@ -56,6 +69,8 @@ export interface GeneratedTable {
   columns: GeneratedColumn[];
   /**
    * template for insert sql
+   * 
+   * e.g. INSERT into t1 (c_1, c_2) VALUES ("%s", "%s");
    */
   insertSQLTemplate: string;
   /**
@@ -65,16 +80,40 @@ export interface GeneratedTable {
 
 }
 
+/**
+ * GeneratedColumn type
+ */
 export interface GeneratedColumn {
 
+  /**
+   * the column name
+   */
   columnName: string;
+  /**
+   * the column type
+   */
   columnType: ColumnType;
 
 }
 
+/**
+ * GeneratedQuery type
+ */
 export interface GeneratedQuery {
 
-  queryName: string
-  joinTables: GeneratedTable[]
+  /**
+   * query name
+   */
+  queryName: string;
+
+  /**
+   * joined table
+   */
+  joinTables: GeneratedTable[];
+
+  /**
+   * query SQL
+   */
+  queryString: string;
 
 }
