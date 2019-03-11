@@ -3,7 +3,7 @@ import { SQLiteDatabaseClient } from '../../dialects/sqlite';
 import { RunCase, SQLType } from '../base';
 import { SequentialExecutor } from '../SequentialExecutor';
 
-describe('Sequential Executor Test Suite', async () => {
+describe('Sequential Executor Test Suite', () => {
 
   const conn = new SQLiteDatabaseClient()
 
