@@ -1,5 +1,5 @@
 import { IExecutor, SQLType, RunResult, RunCase } from "./base";
-import { DatabaseClinet } from "../dialects/base";
+import { IDatabaseClinet } from "../dialects/base";
 import { getLogger, Logger } from "log4js";
 
 /**
@@ -7,11 +7,11 @@ import { getLogger, Logger } from "log4js";
  */
 export class SequentialExecutor implements IExecutor {
 
-  private conn: DatabaseClinet;
+  private conn: IDatabaseClinet;
 
   private logger = getLogger("SequentialExecutor")
 
-  constructor(conn: DatabaseClinet) {
+  constructor(conn: IDatabaseClinet) {
     this.conn = conn;
   }
 

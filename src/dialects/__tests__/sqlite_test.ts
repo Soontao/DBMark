@@ -1,46 +1,61 @@
-import { SQLiteDatabaseClient } from '../sqlite';
-import { readFileSync } from 'fs';
-import * as path from "path"
+import { SQLiteDatabaseSQLHelper } from '../sqlite';
+import { ColumnType } from '../../generator/config';
+import { createDBConnection } from '..';
+import { createUUID } from '../../utils';
 
 describe('sqlite dialect tests', () => {
 
-  const readFile = p => readFileSync(path.join(__dirname, p), { encoding: "utf8" })
+  const randomUUID = createUUID();
 
-  const cURL = ":memory:";
+  const cURL = "sqlite:memory";
 
-  const sCreateDB = readFile("./sqls/create_db.sql")
+  const sCreateTable = `CREATE TABLE IF NOT EXISTS test ( id VARCHAR(32) PRIMARY KEY, v_text VARCHAR(255) );`
 
-  const sInserSample = readFile("./sqls/insert_sample.sql")
+  const sInserSample = `INSERT INTO test(id,v_text) VALUES ("${randomUUID}","test text");`
 
-  const sSelect = readFile("./sqls/select_data.sql")
+  const sSelect = `SELECT * FROM test WHERE id = "${randomUUID}";`
 
 
   test('sqlite should connect', async () => {
-    const c = new SQLiteDatabaseClient()
-    expect(await c.connect(cURL)).toBeTruthy()
+    const c = await createDBConnection(cURL)
+    expect(c.isAlive()).toBeTruthy()
     await c.destroy()
   });
 
   test('sqlite should alive', async () => {
-    const c = new SQLiteDatabaseClient()
-    await c.connect(cURL)
+    const c = await createDBConnection(cURL)
     expect(c.isAlive()).toBeTruthy()
     await c.destroy()
   });
 
   test('sqlite should destroy', async () => {
-    const c = new SQLiteDatabaseClient()
-    await c.connect(cURL)
+    const c = await createDBConnection(cURL)
     expect(c.destroy()).toBeTruthy()
   });
 
   test('sqlite should create table & insert & select', async () => {
-    const c = new SQLiteDatabaseClient()
-    await c.connect(cURL)
-    await c.exec(sCreateDB)
+    const c = await createDBConnection(cURL)
+    await c.exec(sCreateTable)
     await c.exec(sInserSample)
     expect((await c.query(sSelect)).length).toBe(1)
     await c.destroy()
+  });
+
+  test('should generate sqlite create table sql', () => {
+    const helper = new SQLiteDatabaseSQLHelper();
+    const ddl = helper.generateCreateTableSQL({
+      tableName: "t1",
+      columns: [
+        { columnName: "pk_id", columnType: ColumnType.VARCHAR_32, },
+        { columnName: "t1_c1", columnType: ColumnType.INTEGER, },
+        { columnName: "t1_c2", columnType: ColumnType.TINYINT, },
+      ],
+      rowsCount: 100
+    })
+
+    expect(ddl.trim()).toEqual("CREATE TABLE IF NOT EXISTS t1 ( pk_id VARCHAR(32),t1_c1 INTEGER,t1_c2 TINYINT );")
+
+
   });
 
 });

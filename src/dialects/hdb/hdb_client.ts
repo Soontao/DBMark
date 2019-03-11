@@ -1,7 +1,7 @@
 
-import { DatabaseClinet } from './base';
+import { AbstractDatabaseClient } from '../base';
 
-export class HDBDatabaseClient implements DatabaseClinet {
+export class HDBDatabaseClient extends AbstractDatabaseClient {
 
   private db;
 

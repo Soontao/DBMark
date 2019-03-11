@@ -73,12 +73,6 @@ export interface GeneratedTable {
    */
   columns: GeneratedColumn[];
   /**
-   * template for insert sql
-   * 
-   * e.g. INSERT into t1 (c_1, c_2) VALUES ("%s", "%s");
-   */
-  insertSQLTemplate: string;
-  /**
    * the rows' count of the table should have
    */
   rowsCount: number;

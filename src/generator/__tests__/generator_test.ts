@@ -1,38 +1,44 @@
 import { GeneratedDataBase, ColumnType } from "../config";
 import { DatabaseDataGenertor } from './../generator';
+import { SQLiteDatabaseSQLHelper } from "../../dialects/sqlite";
+import { createDBConnection } from './../../dialects/index';
+import { SequentialExecutor } from './../../executors/SequentialExecutor';
 
 
 describe('generator test case', () => {
 
+  const test_config_1_row_count = 523
+
+  const test_config_1: GeneratedDataBase = {
+    databaseName: "test",
+    tables: [
+      {
+        tableName: "t_1",
+        columns: [
+          {
+            columnName: "c_1",
+            columnType: ColumnType.VARCHAR_255
+          },
+          {
+            columnName: "c_2",
+            columnType: ColumnType.INTEGER
+          },
+          {
+            columnName: "c_3",
+            columnType: ColumnType.VARCHAR_10240
+          }
+        ],
+        rowsCount: test_config_1_row_count,
+      }
+
+    ]
+  }
+
   test('should generate sql for one table', () => {
-    const config: GeneratedDataBase = {
-      databaseName: "test",
-      tables: [
-        {
-          tableName: "t_1",
-          columns: [
-            {
-              columnName: "c_1",
-              columnType: ColumnType.VARCHAR_255
-            },
-            {
-              columnName: "c_2",
-              columnType: ColumnType.INTEGER
-            },
-            {
-              columnName: "c_3",
-              columnType: ColumnType.VARCHAR_10240
-            }
-          ],
-          rowsCount: 1000,
-          insertSQLTemplate: 'INSERT INTO (c_1, c_2, c_3) VALUES ("%s", %d, "%s");'
-        }
 
-      ]
-    }
-    const generator = new DatabaseDataGenertor(config)
+    const generator = new DatabaseDataGenertor(test_config_1, new SQLiteDatabaseSQLHelper())
 
-    expect(Array.from(generator).length).toBe(1000)
+    expect(Array.from(generator).length).toBe(test_config_1_row_count)
 
   });
 
@@ -62,7 +68,6 @@ describe('generator test case', () => {
             }
           ],
           rowsCount: t_1_count,
-          insertSQLTemplate: 'INSERT INTO (c_1, c_2, c_3) VALUES ("%s", %d, "%s");'
         },
         {
           tableName: "t_2",
@@ -80,15 +85,36 @@ describe('generator test case', () => {
               columnType: ColumnType.VARCHAR_10240
             }
           ],
-          rowsCount: t_2_count,
-          insertSQLTemplate: 'INSERT INTO (t_2_c_4, t_2_c_5, t_2_c_6) VALUES ("%s", %d, "%s");'
+          rowsCount: t_2_count
         }
 
       ]
     }
-    const generator = new DatabaseDataGenertor(config)
+
+    const generator = new DatabaseDataGenertor(config, new SQLiteDatabaseSQLHelper())
 
     expect(Array.from(generator).length).toBe(t_1_count + t_2_count)
+
+  });
+
+  test('should setup & generate data with seq executor', async () => {
+
+    const helper = new SQLiteDatabaseSQLHelper()
+    const client = await createDBConnection("sqlite:memory")
+    const executor = new SequentialExecutor(client)
+
+    expect(client.isAlive()).toBeTruthy()
+
+    await client.exec(helper.generateCreateTableSQL(test_config_1.tables[0]))
+
+    const generator = new DatabaseDataGenertor(test_config_1, helper)
+
+    await executor.run(generator)
+
+    const queryResult = await client.query(`select count(*) as count from ${test_config_1.tables[0].tableName};`)
+
+    expect(queryResult[0]["count"]).toEqual(test_config_1_row_count)
+
 
   });
 

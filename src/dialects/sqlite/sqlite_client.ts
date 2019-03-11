@@ -1,8 +1,8 @@
-import { DatabaseClinet } from "./base";
+import { AbstractDatabaseClient } from "../base";
 
 const sqlite3 = require("sqlite3").verbose()
 
-export class SQLiteDatabaseClient implements DatabaseClinet {
+export class SQLiteDatabaseClient extends AbstractDatabaseClient {
 
   private db
 
@@ -75,3 +75,4 @@ export class SQLiteDatabaseClient implements DatabaseClinet {
   }
 
 }
+
