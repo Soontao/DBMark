@@ -2,4 +2,4 @@
 
 const { v4 } = require("uuid")
 
-export const createUUID = () => v4().replace(/-/g, "")
+export const createUUID = (): string => v4().replace(/-/g, "")

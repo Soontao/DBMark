@@ -1,4 +1,5 @@
 
 import { createUUID } from './uuid';
+import { parseConnectionURL } from './url_parser';
 
-export { createUUID }
+export { createUUID, parseConnectionURL }

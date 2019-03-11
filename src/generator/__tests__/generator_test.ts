@@ -6,6 +6,7 @@ describe('generator test case', () => {
 
   test('should generate sql for one table', () => {
     const config: GeneratedDataBase = {
+      databaseName: "test",
       tables: [
         {
           tableName: "t_1",
@@ -42,6 +43,7 @@ describe('generator test case', () => {
     const t_2_count = 432;
 
     const config: GeneratedDataBase = {
+      databaseName: "test",
       tables: [
         {
           tableName: "t_1",

@@ -46,6 +46,11 @@ export interface DatabaseConfig {
 export interface GeneratedDataBase {
 
   /**
+   * database name
+   */
+  databaseName: string;
+
+  /**
    * generated tables
    */
   tables: GeneratedTable[];
