@@ -7,7 +7,19 @@ Database Benchmark Tool
 
 ## Target
 
-* Exec SQLs in multi db connection
-* Generate table & data
+* Exec SQLs in multi db connections
+* Generate table & data metadata
 * Generate meaningful join query
-* Migrateable generation metadata
+* Migrateable generated metadata (reuseable)
+* Controllable (client) memory usage
+
+## Tasks
+
+- [x] setup project
+- [x] setup CI
+- [x] parse connection url
+- [x] framework (executor/generator/sqlhelper/dbclient)
+- [ ] cli
+- [ ] electron UI ?
+- [ ] sqlite support
+- [ ] sqlite tests
