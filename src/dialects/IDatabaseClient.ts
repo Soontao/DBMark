@@ -1,4 +1,3 @@
-import { DBUrlObject } from './../utils/url_parser';
 
 export interface IDatabaseClient {
   /**

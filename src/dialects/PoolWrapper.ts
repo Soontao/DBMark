@@ -1,4 +1,4 @@
-import { IDatabaseClient } from "./IDatabaseClinet";
+import { IDatabaseClient } from ".";
 
 export class PoolWrapper {
 

@@ -1,7 +1,7 @@
 
 import { SQLiteDatabaseClient } from './sqlite';
 import { parseConnectionURL } from '../utils';
-import { IDatabaseClient } from "./IDatabaseClinet";
+import { IDatabaseClient } from "./IDatabaseClient";
 import { Pool } from "generic-pool";
 import { PoolWrapper } from './PoolWrapper';
 import { IDatabaseSQLHelper } from './IDatabaseSQLHelper';
