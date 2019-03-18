@@ -1,7 +1,7 @@
 
 import { RunCase, SQLType } from './../executors/base';
 import { GeneratedDataBase } from './config';
-import { IDatabaseSQLHelper } from '../dialects/base';
+import { IDatabaseSQLHelper } from '../dialects';
 
 export class DatabaseDataGenertor implements Iterable<RunCase> {
 
