@@ -1,5 +1,5 @@
 
-import { AbstractDatabaseClient } from '../base';
+import { AbstractDatabaseClient } from '..';
 
 export class HDBDatabaseClient extends AbstractDatabaseClient {
 

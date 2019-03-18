@@ -1,4 +1,4 @@
-import { createDBPool, IDatabaseClinet } from "..";
+import { createDBPool, IDatabaseClient } from "..";
 
 describe('pool wrapper test suite', () => {
 
@@ -7,7 +7,7 @@ describe('pool wrapper test suite', () => {
   test('should create pool & get clients', async () => {
     const pool_size = 15
     const pool = createDBPool("sqlite:memory", 5, pool_size)
-    const clients: IDatabaseClinet[] = []
+    const clients: IDatabaseClient[] = []
 
     for (let index = 0; index < pool_size; index++) {
       clients.push(await pool.get())

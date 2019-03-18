@@ -5,11 +5,11 @@ import { IDatabaseClient } from "./IDatabaseClinet";
 import { Pool } from "generic-pool";
 import { PoolWrapper } from './PoolWrapper';
 import { IDatabaseSQLHelper } from './IDatabaseSQLHelper';
-import { trimEnd } from "lodash";
+import { AbstractDatabaseClient } from './AbstractDatabaseClient';
 
 class NotSupportDatabase extends Error { }
 
-export { SQLiteDatabaseClient, IDatabaseSQLHelper, IDatabaseClient as IDatabaseClinet }
+export { SQLiteDatabaseClient, IDatabaseSQLHelper, IDatabaseClient, AbstractDatabaseClient }
 
 /**
  * create database connection
