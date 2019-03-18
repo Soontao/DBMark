@@ -1,4 +1,4 @@
-import { AbstractDatabaseSQLHelper } from "../base";
+import { AbstractDatabaseSQLHelper } from "../AbstractDatabaseSQLHelper";
 import { GeneratedQuery } from "../../generator/config";
 
 /**

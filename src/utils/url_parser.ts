@@ -2,15 +2,38 @@ import { URL, URLSearchParams } from "url";
 import { trimEnd } from "lodash";
 
 
+/**
+ * data base url information
+ */
+export interface DBUrlObject {
 
-interface DBUrlObject {
-
+  /**
+   * database type
+   */
   type: string;
+  /**
+   * user name
+   */
   user?: string;
+  /**
+   * password
+   */
   password?: string;
+  /**
+   * path
+   */
   path?: string;
+  /**
+   * hostname
+   */
   host: string;
+  /**
+   * database port
+   */
   port: number;
+  /**
+   * addtional parameters
+   */
   parameters?: URLSearchParams
 
 }

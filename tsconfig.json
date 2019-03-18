@@ -30,6 +30,10 @@
   "files": [
     "./src/dialects/index.ts",
     "./src/utils/index.ts",
-    "./src/index.ts"
+    "./src/index.ts",
+    "./src/dialects/IDatabaseSQLHelper.ts",
+    "./src/dialects/AbstractDatabaseSQLHelper.ts",
+    "./src/dialects/AbstractDatabaseClient.ts",
+    "./src/dialects/IDatabaseClinet.ts"
   ]
 }

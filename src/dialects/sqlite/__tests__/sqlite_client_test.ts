@@ -1,7 +1,7 @@
-import { SQLiteDatabaseSQLHelper } from '../sqlite';
-import { ColumnType } from '../../generator/config';
-import { createDBConnection } from '..';
-import { createUUID } from '../../utils';
+import { SQLiteDatabaseSQLHelper } from '..';
+import { ColumnType } from '../../../generator/config';
+import { createDBConnection } from '../..';
+import { createUUID } from '../../../utils';
 
 describe('sqlite dialect tests', () => {
 

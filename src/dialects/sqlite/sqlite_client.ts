@@ -1,4 +1,5 @@
-import { AbstractDatabaseClient } from "../base";
+import { AbstractDatabaseClient } from "../AbstractDatabaseClient";
+import { parseConnectionURL } from "../../utils";
 
 const sqlite3 = require("sqlite3").verbose()
 
@@ -7,8 +8,20 @@ export class SQLiteDatabaseClient extends AbstractDatabaseClient {
   private db
 
   async connect(url): Promise<boolean> {
+    const options = parseConnectionURL(url)
+    var parseUrl = ""
+    
+    switch (options.path) {
+      case "memory":
+        parseUrl = `:${options.path}:`;
+        break;
+      default:
+        parseUrl = options.path
+        break;
+    }
+
     return await new Promise((resolve, reject) => {
-      this.db = new sqlite3.Database(url, err => {
+      this.db = new sqlite3.Database(parseUrl, err => {
         if (err) {
           reject(err)
         } else {
@@ -22,8 +35,6 @@ export class SQLiteDatabaseClient extends AbstractDatabaseClient {
         }
       })
     })
-
-
   }
 
   async isAlive(): Promise<boolean> {

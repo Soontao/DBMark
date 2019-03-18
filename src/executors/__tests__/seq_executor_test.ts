@@ -1,18 +1,12 @@
 
-import { SQLiteDatabaseClient } from '../../dialects/sqlite';
 import { RunCase, SQLType } from '../base';
 import { SequentialExecutor } from '../SequentialExecutor';
+import { createDBConnection } from './../../dialects/index';
 
 describe('Sequential Executor Test Suite', () => {
 
-  const conn = new SQLiteDatabaseClient()
-
-  test('should connect to db', async () => {
-    expect(await conn.connect(":memory:")).toBeTruthy()
-  });
-
   test('should run cases & check result', async () => {
-
+    const conn = await createDBConnection("sqlite:memory")
     const cases: RunCase[] = [
       {
         sql: "CREATE TABLE IF NOT EXISTS test ( id VARCHAR(32) PRIMARY KEY, v_text VARCHAR(255) );",

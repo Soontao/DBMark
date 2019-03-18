@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "faker": "^4.1.0",
+    "generic-pool": "^2.5.4",
     "hdb": "^0.17.0",
     "lodash": "^4.17.11",
     "log4js": "^4.0.2",
