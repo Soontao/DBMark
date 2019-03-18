@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Soontao/DBMark/tree/master.svg?style=shield)](https://circleci.com/gh/Soontao/DBMark/tree/master)
 [![codecov](https://codecov.io/gh/Soontao/DBMark/branch/master/graph/badge.svg)](https://codecov.io/gh/Soontao/DBMark)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSoontao%2FDBMark.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FSoontao%2FDBMark?ref=badge_shield)
 
 Database Benchmark Tool
 
@@ -23,3 +24,6 @@ Database Benchmark Tool
 - [ ] electron UI ?
 - [ ] sqlite support
 - [ ] sqlite tests
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSoontao%2FDBMark.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSoontao%2FDBMark?ref=badge_large)
