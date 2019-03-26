@@ -20,10 +20,11 @@ Database Benchmark Tool
 - [x] setup CI
 - [x] parse connection url
 - [x] framework (executor/generator/sqlhelper/dbclient)
-- [ ] cli
-- [ ] electron UI ?
 - [ ] sqlite support
 - [ ] sqlite tests
+- [ ] cli
+- [ ] electron UI ?
 
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FSoontao%2FDBMark.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FSoontao%2FDBMark?ref=badge_large)

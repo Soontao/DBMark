@@ -2,6 +2,7 @@
     "eslint.autoFixOnSave": true,
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
+    "editor.fontSize": 14,
     "editor.wordWrap": "on",
     "editor.formatOnSave": false,
     "javascript.validate.enable": false
